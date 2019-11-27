@@ -21,14 +21,13 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <ul class="list-unstyled">
-                                <li><a href="#">Modelos</a>
-                                </li>
-                                <li><a href="#">Eventos</a>
-                                </li>
-                                <li><a href="#">Natureza</a>
-                                </li>
-                                <li><a href="#">Minhas Viagens</a>
-                                </li>
+								<?php
+									foreach($categorias as $categoria) {
+								?>
+									<li><a href="<?php echo base_url('categoria/'.$categoria->id.'/'.limpar($categoria->titulo)) ?>"><?php echo $categoria->titulo ?></a></li>
+								<?php
+									}
+								?>
                             </ul>
                         </div>
                     </div>
