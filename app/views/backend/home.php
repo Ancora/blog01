@@ -15,7 +15,7 @@
         <div class="panel-body">
         	<div class="row">
             <div class="col-lg-12">
-              <h2>Bem vindo ao seu Painel de Controle!</h2>
+              <h2>Bem vindo ao seu Painel Administrativo!</h2>
             </div>
           </div>
           <!-- /.row (nested) -->

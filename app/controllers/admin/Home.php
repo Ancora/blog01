@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		/* Dados para envio ao Header */
-		$dados['titulo'] = 'Painel de Controle';
+		$dados['titulo'] = 'Painel Administrativo';
 		$dados['subtitulo'] = 'Home';
 
 		$this->load->view('backend/template/html-header', $dados);
