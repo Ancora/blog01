@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['categoria/(:num)/(:any)'] = 'categorias/index/$1/$2';
 $route['postagem/(:num)/(:any)'] = 'postagens/index/$1/$2';
 $route['autor/(:num)/(:any)'] = 'sobre/autores/$1/$2';
+$route['admin/login'] = 'admin/usuarios/page_login';

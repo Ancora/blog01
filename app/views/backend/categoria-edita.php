@@ -11,24 +11,21 @@
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <?php echo 'Alterar '.$subtitulo ?>
+          <?php echo 'Adicionar nova '.$subtitulo ?>
         </div>
         <div class="panel-body">
         	<div class="row">
             <div class="col-lg-12">
 							<?php
 								echo validation_errors('<div class="alert alert-danger">', '</div>');
-								echo form_open('admin/categoria/salvar_alteracoes');
-								foreach($categorias as $categoria) {
+								echo form_open('admin/categoria/inserir');
 							?>
-									<div class="form-group">
-										<label id="nome">Nome</label>
-										<input type="text" id="nome" name="nome" class="form-control" placeholder="Informe o Nome" value="<?php echo $categoria->titulo ?>">
-									</div>
-									<input type="hidden" id="id" name="id" value="<?php echo $categoria->id ?>" >
-									<button type="submit" class="btn btn-primary">Atualizar</button>
+							<div class="form-group">
+              	<label id="nome">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Informe o Nome">
+              </div>
+							<button type="submit" class="btn btn-success">Cadastrar</button>
 							<?php
-								}
 								echo form_close();
 							?>
             </div>
