@@ -8,22 +8,21 @@ class Sobre extends CI_Controller {
 
 		$this->load->model('categorias_model', 'modelcategorias');
 		$this->categorias = $this->modelcategorias->listar_categorias();
+		$this->load->model('usuarios_model', 'modelusuarios');
 	}
 
-	public function index($id, $slug=null)
+	public function index()
 	{
 		$dados['categorias'] = $this->categorias;
-		$this->load->model('postagens_model', 'modelpostagens');
-		$dados['postagens'] = $this->modelpostagens->categoria_post($id);
+		$dados['autores'] = $this->modelusuarios->listar_autores();
 
 		/* Dados para envio ao Header */
-		$dados['titulo'] = 'Categorias';
-		$dados['subtitulo'] = '';
-		$dados['subtitulodb'] = $this->modelcategorias->listar_titulo($id);
+		$dados['titulo'] = 'Sobre';
+		$dados['subtitulo'] = 'Conheça Nossa Equipe';
 
 		$this->load->view('frontend/template/html-header', $dados);
 		$this->load->view('frontend/template/header');
-		$this->load->view('frontend/categoria');
+		$this->load->view('frontend/sobre');
 		$this->load->view('frontend/template/aside');
 		$this->load->view('frontend/template/footer');
 		$this->load->view('frontend/template/html-footer');
@@ -31,7 +30,6 @@ class Sobre extends CI_Controller {
 
 	public function autores($id, $slug=null) {
 		$dados['categorias'] = $this->categorias;
-		$this->load->model('usuarios_model', 'modelusuarios');
 		$dados['autores'] = $this->modelusuarios->listar_autor($id);
 
 		/* Dados para envio ao Header */
