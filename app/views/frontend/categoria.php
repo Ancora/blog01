@@ -7,7 +7,17 @@
             <div class="col-md-8">
                 <h1 class="page-header">
 									<?php echo $titulo ?>
-                    <small>> <?php echo $subtitulo ?></small>
+                    <small>>
+											<?php
+											if($subtitulo != '') {
+												echo $subtitulo;
+											} else {
+												foreach($subtitulodb as $dbtitulo) {
+													echo $dbtitulo->titulo;
+												}
+											}
+											?>
+										</small>
                 </h1>
 
 				<?php
