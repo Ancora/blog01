@@ -72,15 +72,14 @@ class Usuarios extends CI_Controller {
 			redirect(base_url('admin/login'));
 		}
 		$this->load->model('usuarios_model', 'modelusuarios');
-		$this->load->library('table');
-		$dados['categorias'] = $this->modelcategorias->listar_categoria($id);
+		$dados['usuarios'] = $this->modelusuarios->listar_usuario($id);
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
-		$dados['subtitulo'] = 'Categoria';
+		$dados['subtitulo'] = 'Usuários';
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
-		$this->load->view('backend/alterar-categoria');
+		$this->load->view('backend/alterar-usuario');
 		$this->load->view('backend/template/html-footer');
 	}
 
@@ -89,16 +88,26 @@ class Usuarios extends CI_Controller {
 			redirect(base_url('admin/login'));
 		}
 		$this->load->model('usuarios_model', 'modelusuarios');
+		/* Validações */
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[3]|is_unique[categoria.titulo]');
-
+		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[5]');
+		$this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[usuario.email]');
+		$this->form_validation->set_rules('historico', 'Histórico', 'required|min_length[20]');
+		$this->form_validation->set_rules('nomeuser', 'Nome de Acesso', 'required|min_length[6]|is_unique[usuario.user]');
+		$this->form_validation->set_rules('senha', 'Senha', 'required|min_length[6]');
+		$this->form_validation->set_rules('senha-conf', 'Confirmar Senha', 'required|matches[senha]');
+		/* Fim validações */
 		if ($this->form_validation->run() == FALSE) {
-			$this->index();
+			$this->alterar();
 		} else {
-			$titulo = $this->input->post('nome');
+			$nome = $this->input->post('nome');
+			$email = $this->input->post('email');
+			$historico = $this->input->post('historico');
+			$nomeuser = $this->input->post('nomeuser');
+			$senha = $this->input->post('senha');
 			$id = $this->input->post('id');
-			if ($this->modelcategorias->alterar($titulo, $id)) {
-				redirect(base_url('admin/categoria'));
+			if ($this->modelusuarios->alterar($nome, $email, $historico, $nomeuser, $senha, $id)) {
+				redirect(base_url('admin/usuarios'));
 			} else {
 				echo "Alteração não realizada; verifique com o Administrador do Sistema!";
 			}

@@ -11,7 +11,7 @@
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <?php echo 'Alterar '.$subtitulo ?>
+          <h5>Alterar</h5>
         </div>
         <div class="panel-body">
         	<div class="row">
