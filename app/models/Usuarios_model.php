@@ -8,7 +8,7 @@ class Usuarios_model extends CI_Model {
 	public $email;
 	public $img;
 	public $historico;
-	public $user;
+	public $nomeuser;
 	public $senha;
 
 	public function __construct() {
@@ -27,6 +27,20 @@ class Usuarios_model extends CI_Model {
 		$this->db->from('usuario');
 		$this->db->order_by('nome', 'ASC');
 		return $this->db->get()->result();
+	}
+
+	public function adicionar($nome, $email, $historico, $nomeuser, $senha) {
+		$dados['nome'] = $nome;
+		$dados['email'] = $email;
+		$dados['historico'] = $historico;
+		$dados['user'] = $nomeuser;
+		$dados['senha'] = md5($senha);
+		return $this->db->insert('usuario', $dados);
+	}
+
+	public function excluir($id) {
+		$this->db->where('md5(id)', $id);
+		return $this->db->delete('usuario');
 	}
 
 }

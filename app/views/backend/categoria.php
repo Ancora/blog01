@@ -11,7 +11,7 @@
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <?php echo 'Adicionar nova '.$subtitulo ?>
+          <h5>Adicionar</h5>
         </div>
         <div class="panel-body">
         	<div class="row">
@@ -41,7 +41,7 @@
     <div class="col-lg-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <?php echo 'Alterar '.$subtitulo.' existente' ?>
+          <h5>Alterar/Excluir</h5>
         </div>
         <div class="panel-body">
         	<div class="row">
