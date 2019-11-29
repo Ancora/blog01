@@ -15,7 +15,8 @@
         <div class="panel-body">
         	<div class="row">
             <div class="col-lg-12">
-              <h2>Bem vindo ao seu Painel Administrativo!</h2>
+							<h2><?php echo $this->session->userdata('userlogado')->nome; ?></h2>
+              <h3>Bem vindo ao seu Painel Administrativo!</h3>
             </div>
           </div>
           <!-- /.row (nested) -->

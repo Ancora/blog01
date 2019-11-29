@@ -26,7 +26,7 @@
                             <a href="<?php echo base_url('admin/usuario') ?>"><i class="fa fa-users fa-fw"></i> Usuários</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                            <a href="<?php echo base_url('admin/usuarios/logout') ?>"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
                         </li>
                     </ul>
                 </div>
