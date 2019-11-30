@@ -64,14 +64,15 @@ class Postagens extends CI_Controller {
 	public function alterar($id) {
 
 		$this->load->library('table');
-		$dados['categorias'] = $this->modelcategorias->listar_categoria($id);
+		$dados['categorias'] = $this->modelcategorias->listar_categorias();
+		$dados['postagens'] = $this->modelpostagens->listar_postagem($id);
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
-		$dados['subtitulo'] = 'Categoria';
+		$dados['subtitulo'] = 'Postagens';
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
-		$this->load->view('backend/alterar-categoria');
+		$this->load->view('backend/alterar-postagem');
 		$this->load->view('backend/template/html-footer');
 	}
 

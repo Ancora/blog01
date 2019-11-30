@@ -57,6 +57,11 @@ class Postagens_model extends CI_Model {
 		return $this->db->get('postagens')->result();
 	}
 
+	public function listar_postagem($id) {
+		$this->db->where('md5(id)', $id);
+		return $this->db->get('postagens')->result();
+	}
+
 	public function adicionar($titulo, $subtitulo, $conteudo, $data, $categoria, $user) {
 		$dados['titulo'] = $titulo;
 		$dados['subtitulo'] = $subtitulo;

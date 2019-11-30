@@ -42,7 +42,7 @@
               </div>
 							<div class="form-group">
               	<label id="conteudo">Conteúdo</label>
-                <textarea type="text" id="conteudo" name="conteudo" class="form-control" placeholder="Conteúdo do Post"><?php echo set_value('historico') ?></textarea>
+                <textarea type="text" id="conteudo" name="conteudo" class="form-control" placeholder="Conteúdo do Post"><?php echo set_value('conteudo') ?></textarea>
               </div>
 							<div class="form-group">
               	<label id="data">Data</label>
