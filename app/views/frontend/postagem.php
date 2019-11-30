@@ -17,8 +17,20 @@
 								<p><span class="glyphicon glyphicon-time"></span> <?php echo postadoem($destaque->data) ?></p>
 								<hr>
 								<p><i><?php echo $destaque->subtitulo ?></i></p>
-								<img class="img-responsive" src="http://placehold.it/900x300" alt="">
-								<hr>
+								<?php
+								if ($destaque->img == 1) {
+									$fotopost = base_url('assets/frontend/img/postagens/'.md5($destaque->id).'jpg'.'.jpg');
+								?>
+									<style type="text/css">
+										img {
+											width: 900px;
+										}
+									</style>
+									<img class="img-responsive" src="<?php echo $fotopost ?>" alt="">
+									<hr>
+								<?php
+								}
+								?>
 								<p><?php echo $destaque->conteudo ?></p>
 
 								<hr>

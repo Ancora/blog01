@@ -75,19 +75,18 @@
             <div class="col-lg-12">
 							<style>
 								img {
-									width: 50px;
+									width: 100px;
 								}
 							</style>
 							<?php
 								$this->table->set_heading("Foto", "Título", "Data", "Alterar", "Excluir");
 								foreach($postagens as $postagem) {
 									$titulo = $postagem->titulo;
-									/* if ($usuario->img == 1) {
-										$fotouser = img('assets/frontend/img/usuarios/'.md5($usuario->id).'jpg'.'.jpg');
+									if ($postagem->img == 1) {
+										$fotopost = img('assets/frontend/img/postagens/'.md5($postagem->id).'jpg'.'.jpg');
 									} else {
-										$fotouser = img('assets/frontend/img/semFoto.png');
-									} */
-									$fotopost = 'Post';
+										$fotopost = img('assets/frontend/img/semFoto2.png');
+									}
 									$data = postadoem($postagem->data);
 									$alterar = anchor(base_url('admin/postagens/alterar/'.md5($postagem->id)), '<span class="btn btn-primary"><i class="fa fa-edit fa-fw"></i></span>');
 									$excluir = anchor(base_url('admin/postagens/excluir/'.md5($postagem->id)), '<span class="btn btn-danger"><i class="fa fa-remove fa-fw"></i></span>');

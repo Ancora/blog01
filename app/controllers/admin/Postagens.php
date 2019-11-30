@@ -78,17 +78,56 @@ class Postagens extends CI_Controller {
 
 	public function salvar_alteracoes() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nome', 'Nome', 'required|min_length[3]|is_unique[categoria.titulo]');
+		$this->form_validation->set_rules('titulo', 'Título', 'required|min_length[3]');
+		$this->form_validation->set_rules('subtitulo', 'Subtítulo', 'required|min_length[3]');
+		$this->form_validation->set_rules('conteudo', 'Conteúdo', 'required|min_length[20]');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->index();
+			$this->alterar();
 		} else {
-			$titulo = $this->input->post('nome');
+			$titulo = $this->input->post('titulo');
+			$subtitulo = $this->input->post('subtitulo');
+			$conteudo = $this->input->post('conteudo');
+			$data = $this->input->post('data');
+			$categoria = $this->input->post('select-categoria');
 			$id = $this->input->post('id');
-			if ($this->modelcategorias->alterar($titulo, $id)) {
-				redirect(base_url('admin/categoria'));
+			if ($this->modelpostagens->alterar($titulo, $subtitulo, $conteudo, $data, $categoria, $id)) {
+				redirect(base_url('admin/postagens'));
 			} else {
 				echo "Alteração não realizada; verifique com o Administrador do Sistema!";
+			}
+		}
+	}
+
+	public function nova_foto() {
+		if (!$this->session->userdata('logado')) {
+			redirect(base_url('admin/login'));
+		}
+
+		$id = $this->input->post('id');
+		$config['upload_path'] = './assets/frontend/img/postagens';
+		$config['allowed_types'] = 'jpg';
+		$config['file_name'] = $id.'jpg';
+		$config['overwrite'] = TRUE;
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload()) {
+			echo $this->upload->display_errors();
+		} else {
+			$config2['source_image'] = './assets/frontend/img/postagens/'.$id.'jpg'.'.jpg';
+			$config2['create_thumb'] = FALSE;
+			$config2['width'] = 900;
+			$config2['height'] = 300;
+			$this->load->library('image_lib', $config2);
+
+			if ($this->image_lib->resize()) {
+				if ($this->modelpostagens->alterar_img($id)) {
+					redirect(base_url('admin/postagens/alterar/'.$id));
+				} else {
+					echo "Alteração não realizada; verifique com o Administrador do Sistema!";
+				}
+			} else {
+				echo $this->image_lib->display_errors();
 			}
 		}
 	}

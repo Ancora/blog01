@@ -18,7 +18,7 @@
             <div class="col-lg-12">
 							<?php
 								echo validation_errors('<div class="alert alert-danger">', '</div>');
-								echo form_open('admin/postagens/alterar');
+								echo form_open('admin/postagens/salvar_alteracoes');
 								foreach ($postagens as $postagem) {
 							?>
 							<div class="form-group">
@@ -58,6 +58,8 @@
 								value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($postagem->data)); ?>">
               </div>
 
+							<input type="hidden" name="id" value="<?php echo $postagem->id; ?>">
+
 							<!-- <input type="hidden" name="id-usuario" id="id-usuario" value="<?php echo $this->session->userdata('userlogado')->id ?>"> -->
 
 							<button type="submit" class="btn btn-primary">Atualizar</button>
@@ -79,6 +81,11 @@
         <div class="panel-heading">
           <h5>Foto</h5>
         </div>
+				<style type="text/css">
+					img {
+						width: 450px;
+					}
+				</style>
         <div class="panel-body">
 					<div class="row" style="padding-bottom: 10px;">
             <div class="col-lg-8 col-lg-offset-1">

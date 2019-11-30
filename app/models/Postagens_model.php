@@ -77,4 +77,20 @@ class Postagens_model extends CI_Model {
 		return $this->db->delete('postagens');
 	}
 
+	public function alterar($titulo, $subtitulo, $conteudo, $data, $categoria, $id) {
+		$dados['titulo'] = $titulo;
+		$dados['subtitulo'] = $subtitulo;
+		$dados['conteudo'] = $conteudo;
+		$dados['data'] = $data;
+		$dados['categoria'] = $categoria;
+		$this->db->where('id', $id);
+		return $this->db->update('postagens', $dados);
+	}
+
+	public function alterar_img($id) {
+		$dados['img'] = TRUE;
+		$this->db->where('md5(id)', $id);
+		return $this->db->update('postagens', $dados);
+	}
+
 }
