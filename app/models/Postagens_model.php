@@ -52,4 +52,24 @@ class Postagens_model extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function listar_postagens() {
+		$this->db->order_by('data', 'DESC');
+		return $this->db->get('postagens')->result();
+	}
+
+	public function adicionar($titulo, $subtitulo, $conteudo, $data, $categoria, $user) {
+		$dados['titulo'] = $titulo;
+		$dados['subtitulo'] = $subtitulo;
+		$dados['conteudo'] = $conteudo;
+		$dados['data'] = $data;
+		$dados['categoria'] = $categoria;
+		$dados['user'] = $user;
+		return $this->db->insert('postagens', $dados);
+	}
+
+	public function excluir($id) {
+		$this->db->where('md5(id)', $id);
+		return $this->db->delete('postagens');
+	}
+
 }
