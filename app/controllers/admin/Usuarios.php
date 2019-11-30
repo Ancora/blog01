@@ -114,6 +114,42 @@ class Usuarios extends CI_Controller {
 		}
 	}
 
+	public function nova_foto() {
+		if (!$this->session->userdata('logado')) {
+			redirect(base_url('admin/login'));
+		}
+		$this->load->model('usuarios_model', 'modelusuarios');
+
+		$id = $this->input->post('id');
+		$nomeuser = $this->input->post('user');
+		$config['upload_path'] = './assets/frontend/img/usuarios';
+		$config['allowed_types'] = 'jpg';
+		$config['file_name'] = $id.'jpg';
+		$config['overwrite'] = TRUE;
+		$this->load->library('upload', $config);
+
+		if (!$this->upload->do_upload()) {
+			echo $this->upload->display_errors();
+		} else {
+			$config2['source_image'] = './assets/frontend/img/usuarios/'.$id.'jpg'.'.jpg';
+			$config2['create_thumb'] = FALSE;
+			$config2['width'] = 200;
+			$config2['height'] = 200;
+			$this->load->library('image_lib', $config2);
+
+			if ($this->image_lib->resize()) {
+				if ($this->modelusuarios->alterar_img($id)) {
+					redirect(base_url('admin/usuarios/alterar/'.$id));
+				} else {
+					echo "Alteração não realizada; verifique com o Administrador do Sistema!";
+				}
+			} else {
+				echo $this->image_lib->display_errors();
+			}
+		}
+
+	}
+
 	public function page_login() {
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';

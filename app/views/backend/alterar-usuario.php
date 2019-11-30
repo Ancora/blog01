@@ -67,6 +67,17 @@
           <h5>Foto</h5>
         </div>
         <div class="panel-body">
+					<div class="row" style="padding-bottom: 10px;">
+            <div class="col-lg-3 col-lg-offset-3">
+							<?php
+								if ($usuario->img == 1) {
+									echo img('assets/frontend/img/usuarios/'.md5($usuario->id).'jpg'.'.jpg');
+								} else {
+									echo img('assets/frontend/img/semFoto.png');
+								}
+							?>
+						</div>
+					</div>
         	<div class="row">
             <div class="col-lg-12">
 							<?php
@@ -77,6 +88,7 @@
 
 								echo form_open_multipart('admin/usuarios/nova_foto');
 								echo form_hidden('id', md5($usuario->id));
+								echo form_hidden('user', $usuario->user);
 								echo $divopen;
 								echo form_upload($imagem);
 								echo $divclose;
