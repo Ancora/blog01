@@ -83,7 +83,7 @@
 								foreach($postagens as $postagem) {
 									$titulo = $postagem->titulo;
 									if ($postagem->img == 1) {
-										$fotopost = img('assets/frontend/img/postagens/'.md5($postagem->id).'jpg'.'.jpg');
+										$fotopost = img('assets/frontend/img/postagens/'.md5($postagem->id).'.jpg');
 									} else {
 										$fotopost = img('assets/frontend/img/semFoto2.png');
 									}

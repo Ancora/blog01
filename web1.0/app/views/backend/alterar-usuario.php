@@ -71,7 +71,7 @@
             <div class="col-lg-3 col-lg-offset-3">
 							<?php
 								if ($usuario->img == 1) {
-									echo img('assets/frontend/img/usuarios/'.md5($usuario->id).'jpg'.'.jpg');
+									echo img('assets/frontend/img/usuarios/'.md5($usuario->id).'.jpg');
 								} else {
 									echo img('assets/frontend/img/semFoto.png');
 								}

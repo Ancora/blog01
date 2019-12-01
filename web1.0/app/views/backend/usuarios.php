@@ -76,7 +76,7 @@
 								foreach($usuarios as $usuario) {
 									$nome = $usuario->nome;
 									if ($usuario->img == 1) {
-										$fotouser = img('assets/frontend/img/usuarios/'.md5($usuario->id).'jpg'.'.jpg');
+										$fotouser = img('assets/frontend/img/usuarios/'.md5($usuario->id).'.jpg');
 									} else {
 										$fotouser = img('assets/frontend/img/semFoto.png');
 									}

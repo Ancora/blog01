@@ -23,7 +23,7 @@
 					<hr>
 					<?php
 					if ($destaque->img == 1) {
-						$fotopost = base_url('assets/frontend/img/postagens/'.md5($destaque->id).'jpg'.'.jpg');
+						$fotopost = base_url('assets/frontend/img/postagens/'.md5($destaque->id).'.jpg');
 					?>
 						<style type="text/css">
 							img {

@@ -145,7 +145,7 @@ class Usuarios extends CI_Controller {
 		if (!$this->upload->do_upload()) {
 			echo $this->upload->display_errors();
 		} else {
-			$config2['source_image'] = './assets/frontend/img/usuarios/'.$id.'jpg'.'.jpg';
+			$config2['source_image'] = './assets/frontend/img/usuarios/'.$id.'.jpg';
 			$config2['create_thumb'] = FALSE;
 			$config2['width'] = 200;
 			$config2['height'] = 200;

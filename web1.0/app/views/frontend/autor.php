@@ -26,7 +26,7 @@
 							<div class="col-md-4">
 								<?php
 									if ($autor->img == 1) {
-										$mostrarImg = 'assets/frontend/img/usuarios/'.md5($autor->id).'jpg'.'.jpg';
+										$mostrarImg = 'assets/frontend/img/usuarios/'.md5($autor->id).'.jpg';
 									} else {
 										$mostrarImg = 'assets/frontend/img/semFoto.png';
 									}
