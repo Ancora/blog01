@@ -15,12 +15,21 @@ class Postagens extends CI_Controller {
 		$this->categorias = $this->modelcategorias->listar_categorias();
 	}
 
-	public function index()
+	public function index($pular = null, $post_por_pagina = null)
 	{
 		$this->load->helper('funcoes');
 		$this->load->library('table');
+		$this->load->library('pagination');
+
+		$config['base_url'] = base_url('admin/postagens');
+		$config['total_rows'] = $this->modelpostagens->contar_posts();
+		$post_por_pagina = 5;
+		$config['per_page'] = $post_por_pagina;
+		$this->pagination->initialize($config);
+		$dados['links_paginacao'] = $this->pagination->create_links();
+
 		$dados['categorias'] = $this->categorias;
-		$dados['postagens'] = $this->modelpostagens->listar_postagens();
+		$dados['postagens'] = $this->modelpostagens->listar_postagens($pular, $post_por_pagina);
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
 		$dados['subtitulo'] = 'Postagens';

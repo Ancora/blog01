@@ -10,7 +10,7 @@ class Postagens extends CI_Controller {
 		$this->categorias = $this->modelcategorias->listar_categorias();
 	}
 
-	public function index($id, $slug=null)
+	public function index($id, $slug = null)
 	{
 		$this->load->helper('funcoes');
 		$dados['categorias'] = $this->categorias;

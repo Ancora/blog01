@@ -11,7 +11,7 @@ class Usuarios extends CI_Controller {
 		if (!$this->session->userdata('logado')) {
 			redirect(base_url('admin/login'));
 		}
-		$this->load->helper('funcoes');
+		/* $this->load->helper('funcoes'); */
 		$this->load->library('table');
 		$this->load->model('usuarios_model', 'modelusuarios');
 		$dados['usuarios'] = $this->modelusuarios->listar_autores();
@@ -72,6 +72,7 @@ class Usuarios extends CI_Controller {
 		if (!$this->session->userdata('logado')) {
 			redirect(base_url('admin/login'));
 		}
+		$this->load->helper('funcoes');
 		$this->load->model('usuarios_model', 'modelusuarios');
 		$dados['usuarios'] = $this->modelusuarios->listar_usuario($id);
 		/* Dados para envio ao Header */
@@ -88,6 +89,7 @@ class Usuarios extends CI_Controller {
 		if (!$this->session->userdata('logado')) {
 			redirect(base_url('admin/login'));
 		}
+		$this->load->helper('funcoes');
 		$this->load->model('usuarios_model', 'modelusuarios');
 		/* Validações */
 		$this->load->library('form_validation');

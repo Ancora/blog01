@@ -51,6 +51,7 @@
 					<hr>
 				<?php
 					}
+					echo '<div class="paginatio">'.$links_paginacao.'</div>';
 				?>
 
             </div>

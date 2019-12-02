@@ -97,6 +97,8 @@
 									'table_open' => '<table class="table table-striped">'
 								));
 								echo $this->table->generate();
+								/* Paginação */
+								echo '<div class="pagination">'.$links_paginacao.'</div>';
 							?>
             </div>
           </div>
