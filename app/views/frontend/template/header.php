@@ -30,7 +30,7 @@
                         <a href="<?php echo base_url('sobre') ?>">Sobre</a>
                     </li>
                     <li>
-                        <a href="#">Contato</a>
+                        <a href="<?php echo base_url('contato') ?>">Contato</a>
                     </li>
                 </ul>
             </div>
