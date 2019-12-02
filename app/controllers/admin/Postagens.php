@@ -84,7 +84,7 @@ class Postagens extends CI_Controller {
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
-		$this->load->view('backend/alterar-postagem');
+		$this->load->view('backend/html-alterar-usuario');
 		$this->load->view('backend/template/html-footer');
 	}
 
