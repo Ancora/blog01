@@ -7,7 +7,7 @@ class Usuarios extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function index() {
+	public function index($incluido = null) {
 		if (!$this->session->userdata('logado')) {
 			redirect(base_url('admin/login'));
 		}
@@ -19,6 +19,8 @@ class Usuarios extends CI_Controller {
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
 		$dados['subtitulo'] = 'Usuários';
+
+		$dados['incluido'] = $incluido;
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -49,7 +51,7 @@ class Usuarios extends CI_Controller {
 			$nomeuser = $this->input->post('nomeuser');
 			$senha = $this->input->post('senha');
 			if ($this->modelusuarios->adicionar($nome, $email, $historico, $nomeuser, $senha)) {
-				redirect(base_url('admin/usuarios'));
+				redirect(base_url('admin/usuarios/1'));
 			} else {
 				echo "Cadastro não realizado; verifique com o Administrador do Sistema!";
 			}
