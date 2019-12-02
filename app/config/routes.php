@@ -58,3 +58,6 @@ $route['autor/(:num)/(:any)'] = 'sobre/autores/$1/$2';
 $route['admin/login'] = 'admin/usuarios/page_login';
 $route['admin/postagens/(:num)'] = 'admin/postagens/index/$1';
 $route['categoria/(:num)/(:any)/(:num)'] = 'categorias/index/$1/$2/$3';
+$route['admin/categoria/(:num)'] = 'admin/categoria/index/$1';
+/* $route['admin/postagens/(:num)'] = 'admin/postagens/index/$1'; */
+

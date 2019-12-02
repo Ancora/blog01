@@ -15,7 +15,7 @@ class Postagens extends CI_Controller {
 		$this->categorias = $this->modelcategorias->listar_categorias();
 	}
 
-	public function index($pular = null, $post_por_pagina = null)
+	public function index($pular = null, $post_por_pagina = null, $incluido = null)
 	{
 		$this->load->helper('funcoes');
 		$this->load->library('table');
@@ -33,6 +33,8 @@ class Postagens extends CI_Controller {
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
 		$dados['subtitulo'] = 'Postagens';
+
+		$dados['incluido'] = $incluido;
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -56,7 +58,7 @@ class Postagens extends CI_Controller {
 			$categoria = $this->input->post('select-categoria');
 			$user = $this->input->post('id-usuario');
 			if ($this->modelpostagens->adicionar($titulo, $subtitulo, $conteudo, $data, $categoria, $user)) {
-				redirect(base_url('admin/postagens'));
+				redirect(base_url('admin/postagens/1'));
 			} else {
 				echo "Cadastro não realizado; verifique com o Administrador do Sistema!";
 			}

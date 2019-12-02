@@ -14,7 +14,7 @@ class Categoria extends CI_Controller {
 		$this->categorias = $this->modelcategorias->listar_categorias();
 	}
 
-	public function index()
+	public function index($incluido = null)
 	{
 		$this->load->helper('funcoes');
 		$this->load->library('table');
@@ -22,6 +22,8 @@ class Categoria extends CI_Controller {
 		/* Dados para envio ao Header */
 		$dados['titulo'] = 'Painel Administrativo';
 		$dados['subtitulo'] = 'Categoria';
+
+		$dados['incluido'] = $incluido;
 
 		$this->load->view('backend/template/html-header', $dados);
 		$this->load->view('backend/template/template');
@@ -38,7 +40,7 @@ class Categoria extends CI_Controller {
 		} else {
 			$titulo = $this->input->post('nome');
 			if ($this->modelcategorias->adicionar($titulo)) {
-				redirect(base_url('admin/categoria'));
+				redirect(base_url('admin/categoria/1'));
 			} else {
 				echo "Cadastro não realizado; verifique com o Administrador do Sistema!";
 			}

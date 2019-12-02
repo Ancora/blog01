@@ -17,6 +17,9 @@
         	<div class="row">
             <div class="col-lg-12">
 							<?php
+								if ($incluido == 1) {
+									echo '<div class="alert alert-success">Postagem incluída!!!</div>';
+								}
 								echo validation_errors('<div class="alert alert-danger">', '</div>');
 								echo form_open('admin/postagens/inserir');
 							?>
