@@ -41,7 +41,7 @@ class Contato extends CI_Controller {
 			$ip = $this->input->ip_address();
 
 			$this->load->library('email');
-			$this->email->from('$email, $nome');
+			$this->email->from($email, $nome);
 			$this->email->to('atendimento@ancora-ti.com.br');
 			$this->email->subject('Blog Photo - Fromulário de Contato');
 			$this->email->message(
